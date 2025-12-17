@@ -1,0 +1,100 @@
+body {
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background: #f3eee9; /* nude earthy background */
+    color: #3b2f2f;
+}
+
+.container {
+    max-width: 460px;
+    background: #fffaf6;
+    margin: 70px auto;
+    padding: 32px 28px;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    border-top: 6px solid #7b2d2d; /* burgundy */
+}
+
+/* Initials */
+.initials {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #7b2d2d;
+    letter-spacing: 4px;
+}
+
+/* Gold divider */
+.gold-line {
+    width: 70px;
+    height: 2px;
+    background: linear-gradient(to right, #c9a24d, #e6c36a, #c9a24d);
+    margin: 10px auto 18px;
+}
+
+h1 {
+    text-align: center;
+    color: #7b2d2d;
+    margin-bottom: 5px;
+    font-size: 26px;
+}
+
+p {
+    text-align: center;
+    color: #6b4f3f;
+    margin-bottom: 28px;
+}
+
+label {
+    display: block;
+    margin-top: 18px;
+    font-weight: 600;
+    color: #5a3e36;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 11px 12px;
+    margin-top: 6px;
+    border: 1px solid #d8cfc4;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 14px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #7b2d2d;
+    box-shadow: 0 0 0 2px rgba(123, 45, 45, 0.1);
+}
+
+button {
+    margin-top: 30px;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #7b2d2d, #5a2323);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    box-shadow: 0 6px 18px rgba(123, 45, 45, 0.25);
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Footer */
+.footer-text {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 13px;
+    color: #8a6f5c;
+    font-style: italic;
+}

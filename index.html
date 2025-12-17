@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>P & P 2026 | Prince & Peace</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&family=Alex+Brush&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+:root {
+    --nude-bg: #f3eee9;
+    --nude-light: #fffaf6;
+    --brown-dark: #3b2f2f;
+    --brown-medium: #5a3e36;
+    --brown-soft: #6b4f3f;
+    --burgundy: #7b2d2d;
+    --burgundy-dark: #5a2323;
+    --burgundy-light: rgba(123, 45, 45, 0.1);
+    --gold: linear-gradient(135deg, #c9a24d, #e6c36a);
+    --border-color: #d8cfc4;
+    --shadow: rgba(0, 0, 0, 0.08);
+    --shadow-deep: rgba(0, 0, 0, 0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    font-family: 'Cormorant Garamond', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--nude-bg);
+    color: var(--brown-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+section {
+    padding: 80px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.center {
+    text-align: center;
+}
+
+h1, h2, h3 {
+    color: var(--burgundy);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: 4.5rem;
+    margin-bottom: 10px;
+    background: var(--gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    display: inline-block;
+    font-family: 'Great Vibes', cursive;
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+    font-family: 'Playfair Display', serif;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--burgundy);
+    border-radius: 2px;
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin: 15px 0;
+}
+
+.gold-line {
+    width: 120px;
+    height: 3px;
+    background: var(--gold);
+    margin: 20px auto 30px;
+    border-radius: 2px;
+}
+
+/* Hero Section - Redesigned with Photos */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, rgba(243, 238, 233, 0.95) 0%, rgba(255, 250, 246, 0.9) 100%);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 10% 90%, var(--burgundy-light) 0%, transparent 30%),
+        radial-gradient(circle at 90% 10%, var(--burgundy-light) 0%, transparent 30%);
+    z-index: -1;
+}
+
+.hero-container {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    z-index: 1;
+}
+
+/* Left Side - Photos Grid */
+.hero-photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    height: 500px;
+}
+
+.photo-frame {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.photo-frame:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.photo-frame:hover img {
+    transform: scale(1.05);
+}
+
+.photo-frame:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.photo-frame:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.photo-frame:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+.photo-frame:nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+/* Right Side - Content */
+.hero-content {
+    padding: 40px;
+    position: relative;
+}
+
+.hero-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gold);
+    border-radius: 2px;
+}
+
+.names-container {
+    margin: 30px 0 40px;
+}
+
+.name-stylish {
+    font-family: 'Alex Brush', cursive;
+    font-size: 3.5rem;
+    color: var(--burgundy);
+    line-height: 1.3;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.name-stylish span {
+    display: block;
+    font-size: 1.8rem;
+    color: var(--brown-medium);
+    font-family: 'Dancing Script', cursive;
+    margin-top: 8px;
+    opacity: 0.9;
+}
+
+.couple-divider {
+    font-size: 2.5rem;
+    color: var(--burgundy);
+    margin: 30px 0;
+    font-family: 'Great Vibes', cursive;
+    text-align: center;
+    position: relative;
+}
+
+.couple-divider::before,
+.couple-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 60px;
+    height: 2px;
+    background: var(--burgundy-light);
+    transform: translateY(-50%);
+}
+
+.couple-divider::before {
+    left: 10%;
+}
+
+.couple-divider::after {
+    right: 10%;
+}
+
+.wedding-date {
+    font-size: 1.3rem;
+    color: var(--brown-medium);
+    margin: 25px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    border-left: 3px solid var(--burgundy);
+}
+
+.hashtag {
+    display: inline-block;
+    background: var(--burgundy-light);
+    color: var(--burgundy);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    margin-top: 20px;
+    border: 1px solid rgba(123, 45, 45, 0.2);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 35px;
+    padding: 18px 36px;
+    background: linear-gradient(135deg, var(--burgundy), var(--burgundy-dark));
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 25px rgba(123, 45, 45, 0.25);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    font-family: 'Playfair Display', serif;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+    z-index: -1;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(123, 45, 45, 0.35);
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+/* Cards */
+.card {
+    background: var(--nude-light);
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: 
+        0 10px 30px var(--shadow),
+        0 2px 10px var(--shadow-deep);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--gold);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.card h2 {
+    display: inline-block;
+}
+
+/* Info Cards */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.info-card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    border-left: 4px solid var(--burgundy);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-3px);
+}
+
+.info-card i {
+    font-size: 2rem;
+    color: var(--burgundy);
+    margin-bottom: 15px;
+}
+
+.info-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Hotel Section - Enhanced with Website Links */
+.hotel {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+    padding: 25px;
+    background: white;
+    border-radius: 16px;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+
+.hotel:hover {
+    transform: translateX(5px);
+    border-color: var(--burgundy);
+}
+
+.hotel img {
+    width: 180px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.hotel-details strong {
+    font-size: 1.3rem;
+    color: var(--burgundy);
+    font-family: 'Playfair Display', serif;
+}
+
+.hotel-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.hotel-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--burgundy-light);
+    color: var(--burgundy);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(123, 45, 45, 0.2);
+}
+
+.hotel-link:hover {
+    background: var(--burgundy);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(123, 45, 45, 0.2);
+}
+
+.hotel-link i {
+    font-size: 1rem;
+}
+
+/* RSVP Form */
+#rsvp .card {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+form {
+    margin-top: 30px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.form-group {
+    position: relative;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--brown-medium);
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: white;
+    font-size: 1rem;
+    color: var(--brown-dark);
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    outline: none;
+    border-color: var(--burgundy);
+    box-shadow: 0 0 0 4px rgba(123, 45, 45, 0.15);
+    transform: translateY(-2px);
+}
+
+form textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+form button {
+    margin-top: 35px;
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, var(--burgundy), var(--burgundy-dark));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Playfair Display', serif;
+}
+
+form button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+}
+
+form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(123, 45, 45, 0.3);
+}
+
+form button:hover::before {
+    left: 100%;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--brown-soft);
+    background: linear-gradient(to bottom, var(--nude-light), #f8f3ee);
+    border-top: 1px solid var(--border-color);
+    position: relative;
+}
+
+footer::before {
+    content: '💛';
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .hero-photos {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 3.5rem; }
+    .name-stylish { font-size: 2.8rem; }
+    .name-stylish span { font-size: 1.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+    
+    section { padding: 60px 20px; }
+    
+    .hero { min-height: auto; }
+    
+    .card { padding: 30px 25px; }
+    
+    .hero-photos {
+        height: 300px;
+        gap: 15px;
+    }
+    
+    .hero-content {
+        padding: 20px;
+    }
+    
+    .hotel {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .hotel img {
+        width: 100%;
+        height: 180px;
+    }
+    
+    .btn, form button {
+        padding: 16px 30px;
+    }
+    
+    .hotel-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2.8rem; }
+    .name-stylish { font-size: 2.2rem; }
+    .name-stylish span { font-size: 1.2rem; }
+    h2 { font-size: 1.8rem; }
+    
+    .hero-photos {
+        height: 250px;
+        gap: 10px;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO SECTION - Photos & Names Together -->
+<section class="hero">
+    <div class="hero-container">
+        <!-- Left Side - 4 Photos Grid -->
+        <div class="hero-photos">
+            <div class="photo-frame">
+                <img src="images\AIRPLANE.jpg" alt="Couple Photo 1">
+            </div>
+            <div class="photo-frame">
+                <img src="images\flower red sleeping.jpg" alt="Couple Photo 2">
+            </div>
+            <div class="photo-frame">
+                <img src="images\love chocolate vibe flower.jpg" alt="Couple Photo 3">
+            </div>
+            <div class="photo-frame">
+                <img src="images\black babe.jpg" alt="Couple Photo 4">
+            </div>
+        </div>
+        
+        <!-- Right Side - Names & Content -->
+        <div class="hero-content">
+            <h1>P & P 2026</h1>
+            <div class="gold-line" style="margin: 15px 0 20px;"></div>
+            
+            <div class="names-container">
+                <div class="name-stylish">
+                    Michael Prince Zotoo
+                    <span>The Prince</span>
+                </div>
+                
+                <div class="couple-divider">
+                    &amp;
+                </div>
+                
+                <div class="name-stylish">
+                    Peace NanaYaa Donkor
+                    <span>The Peace</span>
+                </div>
+            </div>
+            
+            <div class="wedding-date">
+                <i class="fas fa-calendar-alt"></i> Saturday, 10th January 2026
+            </div>
+            
+            <p><strong>Two P's. One Purpose.</strong></p>
+            <p>A Journey of Love Begins</p>
+            
+            <div class="hashtag">#PrinceOfPeace26</div>
+            
+            <a href="#rsvp" class="btn">
+                <i class="fas fa-calendar-check"></i>
+                Confirm Attendance
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CEREMONY & RECEPTION -->
+<section>
+    <div class="center">
+        <h2>Our Special Day</h2>
+        <div class="gold-line"></div>
+        <p>Join us as we celebrate our union</p>
+    </div>
+    
+    <div class="info-grid">
+        <div class="info-card">
+            <i class="fas fa-church"></i>
+            <h3>Marriage Ceremony</h3>
+            <p>📍 <strong>Donkor's Residence, Gborxome – Hohoe</strong><br>
+               Behind Hohoe Magistrate Court</p>
+            <p><a href="https://maps.apple/p/pmkiBaBxLCgNPT" target="_blank" class="hotel-link">
+                <i class="fas fa-map-marker-alt"></i> View on Google Maps
+            </a></p>
+            <p>🗓 <strong>Saturday, 10th January 2026</strong><br>
+               ⏰ <strong>11:00 AM</strong></p>
+        </div>
+        
+        <div class="info-card">
+            <i class="fas fa-glass-cheers"></i>
+            <h3>Wedding Reception</h3>
+            <p>📍 <strong>FRANCO Auditorium</strong></p>
+            <p><a href="https://maps.app.goo.gl/KKTcrHFzfKduRTfT7?g_st=ipc" target="_blank" class="hotel-link">
+                <i class="fas fa-map-marker-alt"></i> View on Google Maps
+            </a></p>
+            <p>🗓 <strong>Saturday, 10th January 2026</strong><br>
+               ⏰ <strong>4:00 PM</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- DRESS CODE -->
+<section>
+    <div class="card">
+        <h2>Dress Code</h2>
+        <div class="gold-line" style="margin: 15px 0 25px 0; width: 80px;"></div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 20px;">
+            <div>
+                <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Traditional</h3>
+                <p style="background: rgba(201, 162, 77, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #c9a24d;">
+                    <strong>PROUDLY GHANAIAN</strong>
+                </p>
+            </div>
+            
+            <div>
+                <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Dinner Attire</h3>
+                <p style="padding: 15px; background: rgba(123, 45, 45, 0.05); border-radius: 10px; border-left: 4px solid var(--burgundy);">
+                    <strong>Men:</strong> Formal / Black Tie / Bow Tie 👔<br>
+                    <strong>Ladies:</strong> Dress to Impress 👠<br>
+                    <strong>Service Members:</strong> Service dinner attire encouraged
+                </p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 15px; background: var(--burgundy-light); border-radius: 10px; text-align: center;">
+            <p style="color: var(--burgundy); font-weight: 600;">
+                <i class="fas fa-star"></i> Strictly by Invitation <i class="fas fa-star"></i>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- HOTELS -->
+<section>
+    <div class="card">
+        <h2>Hotel & Accommodation</h2>
+        <div class="gold-line" style="margin: 15px 0 30px 0; width: 80px;"></div>
+        <p style="margin-bottom: 25px;">We've arranged special rates at these nearby hotels:</p>
+
+        <!-- Hotel 1 -->
+        <div class="hotel">
+            <img src="images\VIKAKPO HOTEL.jfif" alt="Vikakpo Hotel">
+            <div class="hotel-details">
+                <strong>Vikakpo Hotel – Hohoe</strong>
+                <p><i class="fas fa-car"></i> 8 minutes drive to reception</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+233256968861">+233 256 968 861</a></p>
+                <div class="hotel-links">
+                    <a href="https://vicakpohotel.com/" target="_blank" class="hotel-link">
+                        <i class="fas fa-globe"></i> Visit Website
+                    </a>
+                  
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hotel 2 -->
+        <div class="hotel">
+            <img src="images\S5.webp" alt="S5 Hotel">
+            <div class="hotel-details">
+                <strong>S5 Hotel</strong>
+                <p><i class="fas fa-car"></i> 12 minutes drive to ceremony</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+233362700009">+233 36 270 0009</a></p>
+                <div class="hotel-links">
+                    <a href="https://s5hotel.com/" target="_blank" class="hotel-link">
+                        <i class="fas fa-globe"></i> Visit Website
+                    </a>
+                   
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hotel 3 -->
+        <div class="hotel">
+            <img src="images\HOTEL DE MORK.jfif" alt="Hotel de Mork">
+            <div class="hotel-details">
+                <strong>Hotel de Mork</strong>
+                <p><i class="fas fa-map-pin"></i> Central Hohoe</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+233504770404">+233 504 770 404</a></p>
+                <div class="hotel-links">
+                    <a href="https://www.ghanabusinessweb.com/hohoe-hohoe-hotels-hotel_de_mork-646.html" target="_blank" class="hotel-link">
+                        <i class="fas fa-globe"></i> Visit Website
+                    </a>
+                 
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hotel 4 -->
+        <div class="hotel">
+            <img src="images\KIKIS COURT.jpg" alt="Kiki's Court">
+            <div class="hotel-details">
+                <strong>Kiki's Court</strong>
+                <p><i class="fas fa-map-pin"></i> Central Hohoe</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+233203267020">+233 20 326 7020</a></p>
+                <div class="hotel-links">
+                    <a href="https://kikiscourt.com/" target="_blank" class="hotel-link">
+                        <i class="fas fa-globe"></i> Visit Website
+                    </a>
+                   
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hotel 5 -->
+        <div class="hotel">
+            <img src="images\FRANCANNA HOTEL.webp" alt="Frankana Hotel">
+            <div class="hotel-details">
+                <strong>Frankana Hotel</strong>
+                <p><i class="fas fa-map-pin"></i> Central Hohoe</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+233531706269">+233 53 170 6269</a></p>
+                <div class="hotel-links">
+                    <a href="https://www.google.com/travel/search?q=frankana%20hotel%20hohoe&g2lb=4965990%2C72317059%2C72414906%2C72471280%2C72485658%2C72560029%2C72573224%2C72647020%2C72686036%2C72803964%2C72882230%2C72958624%2C73059275%2C73064764%2C73104949%2C73107089%2C73169520%2C73192290&hl=en-GH&gl=gh&cs=1&ssta=1&ts=CAESCgoCCAMKAggDEAAaHBIaEhQKBwjqDxABGBASBwjqDxABGBEYATICEAAqBwoFOgNHSFM&qs=CAEyE0Nnb0l0b21HZ01hN2dJWVBFQUU4CEIJEQ2hK2jxDaOLQgkRa-SKncNqOjY&ap=aAG6AQhvdmVydmlldw&ictx=111&ved=0CAAQ5JsGahcKEwiomeeZnsSRAxUAAAAAHQAAAAAQDQ" target="_blank" class="hotel-link">
+                        <i class="fas fa-globe"></i> Visit Website
+                    </a>
+                   
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hotel 6 -->
+        <div class="hotel">
+            <img src="images\LEISURE COZY HOTEL.jfif" alt="Leisure Cozy Hotel">
+            <div class="hotel-details">
+                <strong>Leisure Cozy Hotel</strong>
+                <p><i class="fas fa-car"></i> 12 minutes drive to ceremony</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+233248944270">+233 24 894 4270</a></p>
+                <div class="hotel-links">
+                    <a href="https://www.leisurecozyhotel.com/" target="_blank" class="hotel-link">
+                        <i class="fas fa-globe"></i> Visit Website
+                    </a>
+                    
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VERSE -->
+<section class="center">
+    <div class="card" style="max-width: 700px; margin: 0 auto; background: linear-gradient(135deg, var(--nude-light), white);">
+        <i class="fas fa-quote-left" style="font-size: 2.5rem; color: var(--burgundy-light); margin-bottom: 20px;"></i>
+        <p style="font-size: 1.3rem; line-height: 1.8; color: var(--brown-medium); font-family: 'Dancing Script', cursive;">
+            <em>"And over all these virtues put on love, which binds them all together in perfect unity."</em>
+        </p>
+        <p style="margin-top: 20px; font-size: 1.1rem; color: var(--burgundy); font-weight: 600;">
+            Colossians 3:14
+        </p>
+    </div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp">
+    <div class="card">
+        <h2 class="center">Confirm Attendance</h2>
+        <div class="gold-line" style="margin: 15px auto 30px; width: 80px;"></div>
+        
+        <p style="text-align: center; margin-bottom: 30px; color: var(--brown-medium);">
+            Please RSVP by December 15, 2025
+        </p>
+
+        <form id="rsvpForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Full Name</label>
+                    <input type="text" name="full_name" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-phone"></i> Phone Number</label>
+                    <input type="text" name="phone" required placeholder="Enter your phone number">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Email (optional)</label>
+                <input type="email" name="email" placeholder="Enter your email address">
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-calendar-check"></i> Will you attend?</label>
+                <select name="attendance" required>
+                    <option value="">-- Please select --</option>
+                    <option value="Yes">Yes, I will attend</option>
+                    <option value="No">No, I cannot attend</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-comment"></i> Message (optional)</label>
+                <textarea name="message" placeholder="Send your wishes or special requests..."></textarea>
+            </div>
+
+            <button type="submit">
+                <i class="fas fa-paper-plane"></i> Submit RSVP
+            </button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    Thank you for being part of our love story
+</footer>
+
+<script>
+// RSVP Form Submission
+document.getElementById("rsvpForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    fetch("submit.php",{method:"POST",body:new FormData(this)})
+    .then(r=>r.json())
+    .then(d=>{
+        Swal.fire({
+            icon:d.status==="success"?"success":"info",
+            title:"Thank you!",
+            text:d.message,
+            confirmButtonColor:"#7b2d2d",
+            background: "#fffaf6",
+            color: "#3b2f2f"
+        });
+        if(d.status==="success") this.reset();
+    });
+});
+</script>
+
+</body>
+</html>
