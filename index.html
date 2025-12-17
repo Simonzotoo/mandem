@@ -70,6 +70,9 @@ h1 {
     display: inline-block;
     font-family: 'Great Vibes', cursive;
     letter-spacing: 2px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards;
 }
 
 h2 {
@@ -78,6 +81,8 @@ h2 {
     position: relative;
     display: inline-block;
     font-family: 'Playfair Display', serif;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 h2::after {
@@ -94,6 +99,8 @@ h2::after {
 h3 {
     font-size: 1.8rem;
     margin: 15px 0;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 .gold-line {
@@ -102,6 +109,78 @@ h3 {
     background: var(--gold);
     margin: 20px auto 30px;
     border-radius: 2px;
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes lineExpand {
+    from {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+    to {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
 /* Hero Section - Redesigned with Photos */
@@ -129,6 +208,39 @@ h3 {
     z-index: -1;
 }
 
+/* Floating decorative elements */
+.floating-element {
+    position: absolute;
+    background: var(--burgundy-light);
+    border-radius: 50%;
+    z-index: 0;
+    animation: float 6s ease-in-out infinite;
+}
+
+.floating-element:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.floating-element:nth-child(2) {
+    width: 60px;
+    height: 60px;
+    bottom: 20%;
+    right: 10%;
+    animation-delay: 2s;
+}
+
+.floating-element:nth-child(3) {
+    width: 40px;
+    height: 40px;
+    top: 30%;
+    right: 15%;
+    animation-delay: 4s;
+}
+
 .hero-container {
     max-width: 1200px;
     width: 100%;
@@ -154,11 +266,40 @@ h3 {
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     transition: transform 0.5s ease, box-shadow 0.5s ease;
+    opacity: 0;
+    transform: translateY(50px) rotate(-5deg);
 }
 
-.photo-frame:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+.photo-frame:nth-child(1) {
+    animation: scaleIn 0.8s ease 0.5s forwards;
+    grid-column: 1;
+    grid-row: 1;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.photo-frame:nth-child(2) {
+    animation: scaleIn 0.8s ease 0.7s forwards;
+    grid-column: 2;
+    grid-row: 1;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.photo-frame:nth-child(3) {
+    animation: scaleIn 0.8s ease 0.9s forwards;
+    grid-column: 1;
+    grid-row: 2;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+.photo-frame:nth-child(4) {
+    animation: scaleIn 0.8s ease 1.1s forwards;
+    grid-column: 2;
+    grid-row: 2;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
 }
 
 .photo-frame img {
@@ -168,42 +309,21 @@ h3 {
     transition: transform 0.7s ease;
 }
 
+.photo-frame:hover {
+    transform: translateY(-5px) rotate(0deg);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
 .photo-frame:hover img {
     transform: scale(1.05);
-}
-
-.photo-frame:nth-child(1) {
-    grid-column: 1;
-    grid-row: 1;
-    border-top-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-}
-
-.photo-frame:nth-child(2) {
-    grid-column: 2;
-    grid-row: 1;
-    border-top-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-}
-
-.photo-frame:nth-child(3) {
-    grid-column: 1;
-    grid-row: 2;
-    border-bottom-right-radius: 30px;
-    border-top-left-radius: 30px;
-}
-
-.photo-frame:nth-child(4) {
-    grid-column: 2;
-    grid-row: 2;
-    border-bottom-left-radius: 30px;
-    border-top-right-radius: 30px;
 }
 
 /* Right Side - Content */
 .hero-content {
     padding: 40px;
     position: relative;
+    opacity: 0;
+    animation: fadeInRight 1s ease 0.3s forwards;
 }
 
 .hero-content::before {
@@ -219,6 +339,8 @@ h3 {
 
 .names-container {
     margin: 30px 0 40px;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.8s forwards;
 }
 
 .name-stylish {
@@ -228,6 +350,7 @@ h3 {
     line-height: 1.3;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    transform-origin: left center;
 }
 
 .name-stylish span {
@@ -246,6 +369,8 @@ h3 {
     font-family: 'Great Vibes', cursive;
     text-align: center;
     position: relative;
+    opacity: 0;
+    animation: fadeInUp 1s ease 1s forwards;
 }
 
 .couple-divider::before,
@@ -257,6 +382,8 @@ h3 {
     height: 2px;
     background: var(--burgundy-light);
     transform: translateY(-50%);
+    opacity: 0;
+    animation: lineExpand 0.8s ease 1.2s forwards;
 }
 
 .couple-divider::before {
@@ -275,6 +402,8 @@ h3 {
     background: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     border-left: 3px solid var(--burgundy);
+    opacity: 0;
+    animation: fadeInUp 1s ease 1.4s forwards;
 }
 
 .hashtag {
@@ -288,6 +417,8 @@ h3 {
     border: 1px solid rgba(123, 45, 45, 0.2);
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease 1.6s forwards;
 }
 
 .btn {
@@ -308,6 +439,8 @@ h3 {
     overflow: hidden;
     z-index: 1;
     font-family: 'Playfair Display', serif;
+    opacity: 0;
+    animation: fadeInUp 1s ease 1.8s forwards;
 }
 
 .btn::before {
@@ -329,6 +462,51 @@ h3 {
 
 .btn:hover::before {
     left: 100%;
+}
+
+/* Scroll Animations for Sections */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.scroll-animate.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-animate-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: all 0.8s ease;
+}
+
+.scroll-animate-left.animated {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-animate-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: all 0.8s ease;
+}
+
+.scroll-animate-right.animated {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.8s ease;
+}
+
+.scroll-scale.animated {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* Cards */
@@ -365,6 +543,31 @@ h3 {
     display: inline-block;
 }
 
+/* Section Headers Animation */
+.section-header {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.section-header.animated h2 {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.8s ease 0.2s;
+}
+
+.section-header.animated .gold-line {
+    opacity: 1;
+    transform: scaleX(1);
+    animation: lineExpand 0.8s ease 0.4s forwards;
+}
+
+.section-header.animated p {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.8s ease 0.6s;
+}
+
 /* Info Cards */
 .info-grid {
     display: grid;
@@ -390,6 +593,11 @@ h3 {
     font-size: 2rem;
     color: var(--burgundy);
     margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.info-card:hover i {
+    transform: scale(1.2);
 }
 
 .info-card h3 {
@@ -409,7 +617,14 @@ h3 {
     border-radius: 16px;
     align-items: center;
     border: 1px solid var(--border-color);
-    transition: transform 0.3s ease;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.hotel.animated {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .hotel:hover {
@@ -423,6 +638,11 @@ h3 {
     object-fit: cover;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.hotel:hover img {
+    transform: scale(1.05);
 }
 
 .hotel-details {
@@ -560,6 +780,18 @@ form button:hover::before {
     left: 100%;
 }
 
+/* Confetti Effect */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--burgundy);
+    opacity: 0.8;
+    border-radius: 2px;
+    z-index: 1000;
+    pointer-events: none;
+}
+
 /* Footer */
 footer {
     text-align: center;
@@ -576,11 +808,6 @@ footer::before {
     display: block;
     margin-bottom: 20px;
     animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
 }
 
 /* Responsive Design */
@@ -660,6 +887,11 @@ footer::before {
 
 <body>
 
+<!-- Floating Elements -->
+<div class="floating-element"></div>
+<div class="floating-element"></div>
+<div class="floating-element"></div>
+
 <!-- HERO SECTION - Photos & Names Together -->
 <section class="hero">
     <div class="hero-container">
@@ -719,14 +951,14 @@ footer::before {
 
 <!-- CEREMONY & RECEPTION -->
 <section>
-    <div class="center">
+    <div class="center section-header">
         <h2>Our Special Day</h2>
         <div class="gold-line"></div>
         <p>Join us as we celebrate our union</p>
     </div>
     
     <div class="info-grid">
-        <div class="info-card">
+        <div class="info-card scroll-animate">
             <i class="fas fa-church"></i>
             <h3>Marriage Ceremony</h3>
             <p>📍 <strong>Donkor's Residence, Gborxome – Hohoe</strong><br>
@@ -738,7 +970,7 @@ footer::before {
                ⏰ <strong>11:00 AM</strong></p>
         </div>
         
-        <div class="info-card">
+        <div class="info-card scroll-animate">
             <i class="fas fa-glass-cheers"></i>
             <h3>Wedding Reception</h3>
             <p>📍 <strong>FRANCO Auditorium</strong></p>
@@ -753,19 +985,19 @@ footer::before {
 
 <!-- DRESS CODE -->
 <section>
-    <div class="card">
+    <div class="card scroll-scale">
         <h2>Dress Code</h2>
         <div class="gold-line" style="margin: 15px 0 25px 0; width: 80px;"></div>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 20px;">
-            <div>
+            <div class="scroll-animate-left">
                 <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Traditional</h3>
                 <p style="background: rgba(201, 162, 77, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #c9a24d;">
                     <strong>PROUDLY GHANAIAN</strong>
                 </p>
             </div>
             
-            <div>
+            <div class="scroll-animate-right">
                 <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Dinner Attire</h3>
                 <p style="padding: 15px; background: rgba(123, 45, 45, 0.05); border-radius: 10px; border-left: 4px solid var(--burgundy);">
                     <strong>Men:</strong> Formal / Black Tie / Bow Tie 👔<br>
@@ -775,7 +1007,7 @@ footer::before {
             </div>
         </div>
         
-        <div style="margin-top: 30px; padding: 15px; background: var(--burgundy-light); border-radius: 10px; text-align: center;">
+        <div class="scroll-animate" style="margin-top: 30px; padding: 15px; background: var(--burgundy-light); border-radius: 10px; text-align: center;">
             <p style="color: var(--burgundy); font-weight: 600;">
                 <i class="fas fa-star"></i> Strictly by Invitation <i class="fas fa-star"></i>
             </p>
@@ -785,7 +1017,7 @@ footer::before {
 
 <!-- HOTELS -->
 <section>
-    <div class="card">
+    <div class="card scroll-scale">
         <h2>Hotel & Accommodation</h2>
         <div class="gold-line" style="margin: 15px 0 30px 0; width: 80px;"></div>
         <p style="margin-bottom: 25px;">We've arranged special rates at these nearby hotels:</p>
@@ -800,8 +1032,6 @@ footer::before {
                 <div class="hotel-links">
                     <a href="https://vicakpohotel.com/" target="_blank" class="hotel-link">
                         <i class="fas fa-globe"></i> Visit Website
-                    </a>
-                  
                     </a>
                 </div>
             </div>
@@ -818,8 +1048,6 @@ footer::before {
                     <a href="https://s5hotel.com/" target="_blank" class="hotel-link">
                         <i class="fas fa-globe"></i> Visit Website
                     </a>
-                   
-                    </a>
                 </div>
             </div>
         </div>
@@ -834,8 +1062,6 @@ footer::before {
                 <div class="hotel-links">
                     <a href="https://www.ghanabusinessweb.com/hohoe-hohoe-hotels-hotel_de_mork-646.html" target="_blank" class="hotel-link">
                         <i class="fas fa-globe"></i> Visit Website
-                    </a>
-                 
                     </a>
                 </div>
             </div>
@@ -852,8 +1078,6 @@ footer::before {
                     <a href="https://kikiscourt.com/" target="_blank" class="hotel-link">
                         <i class="fas fa-globe"></i> Visit Website
                     </a>
-                   
-                    </a>
                 </div>
             </div>
         </div>
@@ -868,8 +1092,6 @@ footer::before {
                 <div class="hotel-links">
                     <a href="https://www.google.com/travel/search?q=frankana%20hotel%20hohoe&g2lb=4965990%2C72317059%2C72414906%2C72471280%2C72485658%2C72560029%2C72573224%2C72647020%2C72686036%2C72803964%2C72882230%2C72958624%2C73059275%2C73064764%2C73104949%2C73107089%2C73169520%2C73192290&hl=en-GH&gl=gh&cs=1&ssta=1&ts=CAESCgoCCAMKAggDEAAaHBIaEhQKBwjqDxABGBASBwjqDxABGBEYATICEAAqBwoFOgNHSFM&qs=CAEyE0Nnb0l0b21HZ01hN2dJWVBFQUU4CEIJEQ2hK2jxDaOLQgkRa-SKncNqOjY&ap=aAG6AQhvdmVydmlldw&ictx=111&ved=0CAAQ5JsGahcKEwiomeeZnsSRAxUAAAAAHQAAAAAQDQ" target="_blank" class="hotel-link">
                         <i class="fas fa-globe"></i> Visit Website
-                    </a>
-                   
                     </a>
                 </div>
             </div>
@@ -886,8 +1108,6 @@ footer::before {
                     <a href="https://www.leisurecozyhotel.com/" target="_blank" class="hotel-link">
                         <i class="fas fa-globe"></i> Visit Website
                     </a>
-                    
-                    </a>
                 </div>
             </div>
         </div>
@@ -896,7 +1116,7 @@ footer::before {
 
 <!-- VERSE -->
 <section class="center">
-    <div class="card" style="max-width: 700px; margin: 0 auto; background: linear-gradient(135deg, var(--nude-light), white);">
+    <div class="card scroll-scale" style="max-width: 700px; margin: 0 auto; background: linear-gradient(135deg, var(--nude-light), white);">
         <i class="fas fa-quote-left" style="font-size: 2.5rem; color: var(--burgundy-light); margin-bottom: 20px;"></i>
         <p style="font-size: 1.3rem; line-height: 1.8; color: var(--brown-medium); font-family: 'Dancing Script', cursive;">
             <em>"And over all these virtues put on love, which binds them all together in perfect unity."</em>
@@ -909,33 +1129,35 @@ footer::before {
 
 <!-- RSVP -->
 <section id="rsvp">
-    <div class="card">
-        <h2 class="center">Confirm Attendance</h2>
-        <div class="gold-line" style="margin: 15px auto 30px; width: 80px;"></div>
-        
-        <p style="text-align: center; margin-bottom: 30px; color: var(--brown-medium);">
-            Please RSVP by December 15, 2025
-        </p>
+    <div class="card scroll-scale">
+        <div class="center section-header">
+            <h2>Confirm Attendance</h2>
+            <div class="gold-line" style="margin: 15px auto 30px; width: 80px;"></div>
+            
+            <p style="text-align: center; margin-bottom: 30px; color: var(--brown-medium);">
+                Please RSVP by December 15, 2025
+            </p>
+        </div>
 
         <form id="rsvpForm">
             <div class="form-grid">
-                <div class="form-group">
+                <div class="form-group scroll-animate-left">
                     <label><i class="fas fa-user"></i> Full Name</label>
                     <input type="text" name="full_name" required placeholder="Enter your full name">
                 </div>
                 
-                <div class="form-group">
+                <div class="form-group scroll-animate-right">
                     <label><i class="fas fa-phone"></i> Phone Number</label>
                     <input type="text" name="phone" required placeholder="Enter your phone number">
                 </div>
             </div>
             
-            <div class="form-group">
+            <div class="form-group scroll-animate">
                 <label><i class="fas fa-envelope"></i> Email (optional)</label>
                 <input type="email" name="email" placeholder="Enter your email address">
             </div>
             
-            <div class="form-group">
+            <div class="form-group scroll-animate">
                 <label><i class="fas fa-calendar-check"></i> Will you attend?</label>
                 <select name="attendance" required>
                     <option value="">-- Please select --</option>
@@ -944,12 +1166,12 @@ footer::before {
                 </select>
             </div>
             
-            <div class="form-group">
+            <div class="form-group scroll-animate">
                 <label><i class="fas fa-comment"></i> Message (optional)</label>
                 <textarea name="message" placeholder="Send your wishes or special requests..."></textarea>
             </div>
 
-            <button type="submit">
+            <button type="submit" class="scroll-animate">
                 <i class="fas fa-paper-plane"></i> Submit RSVP
             </button>
         </form>
@@ -961,12 +1183,71 @@ footer::before {
 </footer>
 
 <script>
-// RSVP Form Submission
+// Scroll Animation Observer
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            
+            // If it's a hotel element, add staggered animation
+            if (entry.target.classList.contains('hotel')) {
+                const index = Array.from(entry.target.parentNode.children).indexOf(entry.target);
+                entry.target.style.transitionDelay = `${index * 0.1}s`;
+            }
+        }
+    });
+}, observerOptions);
+
+// Observe all elements with animation classes
+document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-scale, .hotel, .section-header').forEach(el => {
+    scrollObserver.observe(el);
+});
+
+// Confetti effect on button click
+function createConfetti() {
+    const colors = ['#7b2d2d', '#c9a24d', '#5a3e36', '#e6c36a'];
+    const confettiCount = 50;
+    
+    for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.top = '-10px';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.width = `${Math.random() * 10 + 5}px`;
+        confetti.style.height = `${Math.random() * 10 + 5}px`;
+        confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+        
+        document.body.appendChild(confetti);
+        
+        // Animate confetti
+        const animation = confetti.animate([
+            { transform: `translateY(0) rotate(0deg)`, opacity: 1 },
+            { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+        ], {
+            duration: Math.random() * 2000 + 1000,
+            easing: 'cubic-bezier(0.1, 0.8, 0.8, 1)'
+        });
+        
+        // Remove confetti after animation
+        animation.onfinish = () => confetti.remove();
+    }
+}
+
+// Add confetti to RSVP form submission
 document.getElementById("rsvpForm").addEventListener("submit", function(e){
     e.preventDefault();
     fetch("submit.php",{method:"POST",body:new FormData(this)})
     .then(r=>r.json())
     .then(d=>{
+        if(d.status==="success") {
+            createConfetti();
+        }
         Swal.fire({
             icon:d.status==="success"?"success":"info",
             title:"Thank you!",
@@ -977,6 +1258,42 @@ document.getElementById("rsvpForm").addEventListener("submit", function(e){
         });
         if(d.status==="success") this.reset();
     });
+});
+
+// Hero section floating elements animation
+const floatingElements = document.querySelectorAll('.floating-element');
+floatingElements.forEach((el, index) => {
+    el.style.animationDelay = `${index * 2}s`;
+});
+
+// Add smooth hover effect to info cards
+document.querySelectorAll('.info-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px)';
+        card.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.1)';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0)';
+        card.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
+    });
+});
+
+// Add subtle background animation on scroll
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const rate = scrolled * -0.5;
+    document.querySelector('.hero').style.backgroundPosition = `0px ${rate}px`;
+});
+
+// Initialize animations when page loads
+window.addEventListener('load', () => {
+    // Trigger hero animations
+    setTimeout(() => {
+        document.querySelectorAll('.photo-frame').forEach(frame => {
+            frame.style.opacity = '1';
+        });
+    }, 100);
 });
 </script>
 
