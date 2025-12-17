@@ -606,6 +606,58 @@ h3 {
     font-family: 'Playfair Display', serif;
 }
 
+/* Dress Code Section - FIXED */
+.dress-code-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.dress-code-item {
+    margin-bottom: 0;
+}
+
+.dress-code-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--burgundy);
+    font-family: 'Playfair Display', serif;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.dress-code-item p {
+    padding: 15px;
+    border-radius: 10px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.traditional-box {
+    background: rgba(201, 162, 77, 0.1);
+    border-left: 4px solid #c9a24d;
+}
+
+.dinner-box {
+    background: rgba(123, 45, 45, 0.05);
+    border-left: 4px solid var(--burgundy);
+}
+
+.invitation-note {
+    margin-top: 30px;
+    padding: 15px;
+    background: var(--burgundy-light);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.invitation-note p {
+    color: var(--burgundy);
+    font-weight: 600;
+    margin: 0;
+}
+
 /* Hotel Section - Enhanced with Website Links */
 .hotel {
     display: grid;
@@ -810,7 +862,7 @@ footer::before {
     animation: pulse 2s infinite;
 }
 
-/* Responsive Design */
+/* Responsive Design - UPDATED FOR MOBILE IMAGES */
 @media (max-width: 1024px) {
     .hero-container {
         grid-template-columns: 1fr;
@@ -831,56 +883,224 @@ footer::before {
     
     section { padding: 60px 20px; }
     
-    .hero { min-height: auto; }
+    .hero { 
+        min-height: auto;
+        padding: 40px 20px 60px;
+    }
     
     .card { padding: 30px 25px; }
     
+    /* UPDATED: Mobile photo grid */
     .hero-photos {
-        height: 300px;
+        height: auto;
+        min-height: 500px;
         gap: 15px;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
+    
+    .photo-frame {
+        height: 200px;
+        min-height: 200px;
+        transform: none !important;
+    }
+    
+    /* Reset grid positions for mobile */
+    .photo-frame:nth-child(1),
+    .photo-frame:nth-child(2),
+    .photo-frame:nth-child(3),
+    .photo-frame:nth-child(4) {
+        grid-column: 1;
+        border-radius: 12px;
+    }
+    
+    .photo-frame:nth-child(1) { grid-row: 1; }
+    .photo-frame:nth-child(2) { grid-row: 2; }
+    .photo-frame:nth-child(3) { grid-row: 3; }
+    .photo-frame:nth-child(4) { grid-row: 4; }
+    
+    /* Better image display for mobile */
+    .photo-frame img {
+        object-fit: contain;
+        background-color: var(--nude-light);
     }
     
     .hero-content {
         padding: 20px;
+        text-align: center;
+    }
+    
+    .hero-content::before {
+        display: none;
+    }
+    
+    .names-container {
+        margin: 20px 0 30px;
     }
     
     .hotel {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 20px;
     }
     
     .hotel img {
         width: 100%;
-        height: 180px;
+        height: 200px;
+        object-fit: cover;
     }
     
     .btn, form button {
         padding: 16px 30px;
+        width: 100%;
+        max-width: 300px;
     }
     
     .hotel-links {
         justify-content: center;
     }
+    
+    /* Fix floating elements on mobile */
+    .floating-element {
+        display: none;
+    }
+    
+    /* Dress Code mobile fix */
+    .dress-code-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 }
 
 @media (max-width: 480px) {
     h1 { font-size: 2.8rem; }
-    .name-stylish { font-size: 2.2rem; }
-    .name-stylish span { font-size: 1.2rem; }
+    .name-stylish { 
+        font-size: 2.2rem;
+        text-align: center;
+    }
+    .name-stylish span { 
+        font-size: 1.2rem;
+        text-align: center;
+    }
     h2 { font-size: 1.8rem; }
     
     .hero-photos {
-        height: 250px;
-        gap: 10px;
+        min-height: 400px;
+    }
+    
+    .photo-frame {
+        height: 160px;
+        min-height: 160px;
+    }
+    
+    .couple-divider::before,
+    .couple-divider::after {
+        width: 40px;
+    }
+    
+    .couple-divider::before {
+        left: 5%;
+    }
+    
+    .couple-divider::after {
+        right: 5%;
     }
     
     .info-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     .form-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
+    
+    /* Adjust hotel images for very small screens */
+    .hotel img {
+        height: 160px;
+    }
+    
+    /* Dress Code headings */
+    .dress-code-item h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Additional Mobile Optimizations */
+@media (max-width: 360px) {
+    h1 { font-size: 2.4rem; }
+    .name-stylish { font-size: 1.8rem; }
+    .name-stylish span { font-size: 1rem; }
+    
+    .hero-photos {
+        min-height: 350px;
+    }
+    
+    .photo-frame {
+        height: 130px;
+        min-height: 130px;
+    }
+    
+    .wedding-date {
+        font-size: 1.1rem;
+        padding: 12px;
+    }
+    
+    .hashtag {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    
+    .dress-code-item h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Portrait orientation specific fixes */
+@media (max-height: 700px) and (orientation: portrait) {
+    .hero {
+        min-height: auto;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    
+    .hero-photos {
+        height: 300px;
+    }
+    
+    .photo-frame {
+        height: 140px;
+    }
+}
+
+/* Landscape orientation specific fixes */
+@media (max-width: 900px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 40px 20px;
+    }
+    
+    .hero-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+    
+    .hero-photos {
+        height: 300px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+    
+    .photo-frame {
+        height: 100%;
+    }
+    
+    /* Reset to original grid for landscape */
+    .photo-frame:nth-child(1) { grid-column: 1; grid-row: 1; }
+    .photo-frame:nth-child(2) { grid-column: 2; grid-row: 1; }
+    .photo-frame:nth-child(3) { grid-column: 1; grid-row: 2; }
+    .photo-frame:nth-child(4) { grid-column: 2; grid-row: 2; }
 }
 </style>
 </head>
@@ -983,23 +1203,23 @@ footer::before {
     </div>
 </section>
 
-<!-- DRESS CODE -->
+<!-- DRESS CODE - FIXED SECTION -->
 <section>
     <div class="card scroll-scale">
         <h2>Dress Code</h2>
         <div class="gold-line" style="margin: 15px 0 25px 0; width: 80px;"></div>
         
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 20px;">
-            <div class="scroll-animate-left">
-                <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Traditional</h3>
-                <p style="background: rgba(201, 162, 77, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #c9a24d;">
+        <div class="dress-code-grid">
+            <div class="dress-code-item scroll-animate-left">
+                <h3>Traditional</h3>
+                <p class="traditional-box">
                     <strong>PROUDLY GHANAIAN</strong>
                 </p>
             </div>
             
-            <div class="scroll-animate-right">
-                <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Dinner Attire</h3>
-                <p style="padding: 15px; background: rgba(123, 45, 45, 0.05); border-radius: 10px; border-left: 4px solid var(--burgundy);">
+            <div class="dress-code-item scroll-animate-right">
+                <h3>Dinner Attire</h3>
+                <p class="dinner-box">
                     <strong>Men:</strong> Formal / Black Tie / Bow Tie 👔<br>
                     <strong>Ladies:</strong> Dress to Impress 👠<br>
                     <strong>Service Members:</strong> Service dinner attire encouraged
@@ -1007,8 +1227,8 @@ footer::before {
             </div>
         </div>
         
-        <div class="scroll-animate" style="margin-top: 30px; padding: 15px; background: var(--burgundy-light); border-radius: 10px; text-align: center;">
-            <p style="color: var(--burgundy); font-weight: 600;">
+        <div class="invitation-note scroll-animate">
+            <p>
                 <i class="fas fa-star"></i> Strictly by Invitation <i class="fas fa-star"></i>
             </p>
         </div>
@@ -1204,7 +1424,7 @@ const scrollObserver = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe all elements with animation classes
-document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-scale, .hotel, .section-header').forEach(el => {
+document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-scale, .hotel, .section-header, .dress-code-item').forEach(el => {
     scrollObserver.observe(el);
 });
 
@@ -1295,6 +1515,21 @@ window.addEventListener('load', () => {
         });
     }, 100);
 });
+
+// Fix mobile touch hover states
+if ('ontouchstart' in window) {
+    document.querySelectorAll('.photo-frame, .info-card, .hotel, .btn, .hotel-link').forEach(el => {
+        el.addEventListener('touchstart', function() {
+            this.classList.add('touch-active');
+        });
+        
+        el.addEventListener('touchend', function() {
+            setTimeout(() => {
+                this.classList.remove('touch-active');
+            }, 150);
+        });
+    });
+}
 </script>
 
 </body>
